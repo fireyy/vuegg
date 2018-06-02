@@ -15,7 +15,8 @@ function newState (project) {
       },
       selectedPage: null,
       selectedElements: [],
-      editorZoom: 1
+      editorZoom: 1,
+      editorSize: 'lg'
     },
     oauth: {
       isAuthorized: false,

@@ -62,6 +62,15 @@ const internalAppMutations = {
    */
   [types._updateEditorZoom]: function (state, currentZoom) {
     state.app.editorZoom = currentZoom
+  },
+
+  /**
+   * Updates the editor viewport size
+   *
+   * @param {string} currentSize : String with the current viewport size value
+   */
+  [types._updateEditorSize]: function (state, currentSize) {
+    state.app.editorSize = currentSize
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="mainegg">
+  <div class="mainegg" :style="editorStyle">
     <stage v-if="selectedPage" :page="selectedPage" :zoom="zoom"></stage>
     <zoom-menu @zoomChange="zoomHandler" :zoom="zoom" class="zoom-menu"></zoom-menu>
   </div>
@@ -25,7 +25,15 @@ export default {
       pages: state => state ? state.project.pages : [],
       zoom: state => state.app.editorZoom
     }),
-    ...mapGetters([getPageIndexById])
+    ...mapGetters([getPageIndexById]),
+    editorStyle () {
+      let { editorSize } = this.$store.state.app
+      return (editorSize === 'sm')
+        ? {height: '640px', width: '360px', margin: '0 auto'}
+        : (editorSize === 'md')
+          ? {height: '1024px', width: '768px', margin: '0 auto'}
+          : {}
+    }
   },
   watch: {
     // After a redo/undo action this will apply
@@ -55,6 +63,7 @@ export default {
 .mainegg {
   margin: 0 57px;
   height: 100%;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .zoom-menu {

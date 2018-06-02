@@ -24,6 +24,26 @@
 
     <div class="separator"></div>
 
+    <button v-tooltip="'phone'" class="action-btn" @click="handleEditorSize('sm')">
+      <svgicon icon="system/dev_sm" width="24" height="24"
+        :color="(editorSize === 'sm') ? '#2b6a73' : '#2b6a7330'">
+      </svgicon>
+    </button>
+
+    <button v-tooltip="'tablet'" class="action-btn" @click="handleEditorSize('md')">
+      <svgicon icon="system/dev_md" width="24" height="24"
+        :color="(editorSize === 'md') ? '#2b6a73' : '#2b6a7330'">
+      </svgicon>
+    </button>
+
+    <button v-tooltip="'full screen'" class="action-btn" @click="handleEditorSize('lg')">
+      <svgicon icon="system/dev_lg" width="24" height="24"
+        :color="(editorSize === 'lg') ? '#2b6a73' : '#2b6a7330'">
+      </svgicon>
+    </button>
+
+    <div class="separator"></div>
+
     <button v-tooltip="'Clear project'" class="action-btn"
       :disabled="isLoading" @click="$root.$emit('open-confirm-dialog')">
       <svgicon icon="system/actions/delete" width="24" height="24" color="#2b6a73"></svgicon>
@@ -76,8 +96,8 @@
 
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import { downloadProject, downloadVueSources, loadVueggProject } from '@/store/types'
+import { mapState, mapActions, mapMutations } from 'vuex'
+import { downloadProject, downloadVueSources, loadVueggProject, _updateEditorSize } from '@/store/types'
 
 import '@/assets/icons/system/actions'
 
@@ -103,7 +123,8 @@ export default {
       hasChanges: state => state.app.hasChanges,
       canUndo: state => state.app.canUndo,
       canRedo: state => state.app.canRedo,
-      isLoggedIn: state => state.oauth.isAuthorized
+      isLoggedIn: state => state.oauth.isAuthorized,
+      editorSize: state => state.app.editorSize
     })
   },
   methods: {
@@ -146,7 +167,12 @@ export default {
       reader.readAsText(file)
     },
 
-    ...mapActions([downloadProject, downloadVueSources, loadVueggProject])
+    handleEditorSize (size) {
+      return this._updateEditorSize(size)
+    },
+
+    ...mapActions([downloadProject, downloadVueSources, loadVueggProject]),
+    ...mapMutations([_updateEditorSize])
   }
 }
 </script>
