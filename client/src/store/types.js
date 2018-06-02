@@ -48,6 +48,7 @@ export const rebaseSelectedElements = 'rebaseSelectedElements'
 export const addProject = 'addProject'
 export const updateProject = 'updateProject'
 export const deleteProject = 'deleteProject'
+export const updateProjectEditorSize = 'updateProjectEditorSize'
 
 export const createPage = 'createPage'
 export const updatePage = 'updatePage'
@@ -70,7 +71,6 @@ export const _toggleCanRedo = '_toggleCanRedo'
 export const _toggleCanUndo = '_toggleCanUndo'
 export const _togglePageDialog = '_togglePageDialog'
 export const _updateEditorZoom = '_updateEditorZoom'
-export const _updateEditorSize = '_updateEditorSize'
 
 export const _changeActivePage = '_changeActivePage'
 export const _rebaseActivePage = '_rebaseActivePage'
@@ -128,6 +128,7 @@ const types = {
   addProject,
   updateProject,
   deleteProject,
+  updateProjectEditorSize,
 
   createPage,
   updatePage,
@@ -150,7 +151,6 @@ const types = {
   _toggleCanUndo,
   _togglePageDialog,
   _updateEditorZoom,
-  _updateEditorSize,
 
   _changeActivePage,
   _rebaseActivePage,

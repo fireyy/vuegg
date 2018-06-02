@@ -23,14 +23,14 @@ export default {
     ...mapState({
       selectedPage: state => state.app.selectedPage,
       pages: state => state ? state.project.pages : [],
-      zoom: state => state.app.editorZoom
+      zoom: state => state.app.editorZoom,
+      editorSize: state => state.project.editorSize
     }),
     ...mapGetters([getPageIndexById]),
     editorStyle () {
-      let { editorSize } = this.$store.state.app
-      return (editorSize === 'sm')
+      return (this.editorSize === 'sm')
         ? {height: '640px', width: '360px', margin: '0 auto'}
-        : (editorSize === 'md')
+        : (this.editorSize === 'md')
           ? {height: '1024px', width: '768px', margin: '0 auto'}
           : {}
     }

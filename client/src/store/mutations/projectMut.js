@@ -24,6 +24,15 @@ const projectMutations = {
  */
   [types.deleteProject]: function (state) {
     console.debug('The project has been cleared')
+  },
+
+  /**
+   * Updates the editor viewport size
+   *
+   * @param {string} currentSize : String with the current viewport size value
+   */
+  [types.updateProjectEditorSize]: function (state, currentSize) {
+    state.project.editorSize = currentSize
   }
 }
 

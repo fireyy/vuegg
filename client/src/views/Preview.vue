@@ -61,7 +61,7 @@ export default {
   components: { PrevStage },
   data: function () {
     return {
-      breakpoint: 'lg'
+      breakpoint: this.$store.state.project.editorSize || 'lg'
     }
   },
   computed: {

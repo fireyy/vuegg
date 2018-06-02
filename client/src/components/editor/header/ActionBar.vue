@@ -97,7 +97,7 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex'
-import { downloadProject, downloadVueSources, loadVueggProject, _updateEditorSize } from '@/store/types'
+import { downloadProject, downloadVueSources, loadVueggProject, updateProjectEditorSize } from '@/store/types'
 
 import '@/assets/icons/system/actions'
 
@@ -124,7 +124,7 @@ export default {
       canUndo: state => state.app.canUndo,
       canRedo: state => state.app.canRedo,
       isLoggedIn: state => state.oauth.isAuthorized,
-      editorSize: state => state.app.editorSize
+      editorSize: state => state.project.editorSize
     })
   },
   methods: {
@@ -168,11 +168,11 @@ export default {
     },
 
     handleEditorSize (size) {
-      return this._updateEditorSize(size)
+      return this.updateProjectEditorSize(size)
     },
 
     ...mapActions([downloadProject, downloadVueSources, loadVueggProject]),
-    ...mapMutations([_updateEditorSize])
+    ...mapMutations([updateProjectEditorSize])
   }
 }
 </script>
